@@ -3,6 +3,25 @@ using namespace std;
 const int row = 10 , col = 10; //set size of rows & columns
 
 /* functions prototypes */
+/* How to prototype a function with have 2D array parameter using pointer ? */
+/*
+ we know that name of array returns a pointer to the first element but each element isn't int 
+ Each element = 1-D of 10 elements  
+ ex : 
+ -----
+ // creat 10 * 10 array  
+ B[10][10] ;  
+ 
+ Type of pointer doesn't matter when you read address , 
+ it matters when using pointer arithmetic or derefrencing.  
+ 
+ int *ptr = B ;             // this line will cause compilation error
+ 
+ // a pointer to array of 10 elemnts 
+ int (*ptr)[10] = B ;       // correct code 
+
+*/
+
 void fillZeros(int(*)[10] );
 void readFromUser(int(*)[10] );
 void printArrElements(int(*)[10] );
