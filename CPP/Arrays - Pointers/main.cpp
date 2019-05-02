@@ -6,7 +6,7 @@
 /* * Check if Array is out of bound whatever its type */
 /* * count character of any string */
 
-/* By : Mohammed Hemed *************/
+/* By  : Mohammed Hemed *************/
 using namespace std;
 #define SIZE   20
 ;
