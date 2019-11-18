@@ -35,12 +35,17 @@ public :
      newStudent->setGrade(studentGrade);
      newStudent->next = NULL;
 
+     /* if list is empty : */   
      if (studentPosition == 1 )
      {
      *headStudent = newStudent;
      return;
      }
-
+    /* 
+    to reach specific positoin : 
+    wanted position = (wanted position -1) -> next  
+    and this for loop ends before i = wanted position -2
+    */
     for (int i = 0 ; i<(studentPosition-2);i++)
         {
         cursor = cursor->next ;
