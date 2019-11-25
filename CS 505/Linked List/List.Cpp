@@ -2,38 +2,36 @@
 
     template <class dataType , class keyType>
     /* constructor */
-	List::List(){
+	List<keyType,dataType> :: List(){
 		head = cursor = prev = NULL; 
 	}
 	/* destructor */
-	template <class dataType , class keyType>
-	List::~List(){
+	
+	List<keyType,dataType> ::~List()
+	{
 		makeListEmpty();   /* deallocate all linked nodes in heap */
 	}
     
-    template <class dataType , class keyType>
-	bool isListEmty (){ return head   == NULL ;  }
+  
+	bool List<keyType,dataType>:: isListEmty (){ return head   == NULL ;  }
 	
-	template <class dataType , class keyType>
-	bool isCurEmpty (){ return cursor == NULL ;  }    
+	bool List<keyType,dataType>:: isCurEmpty (){ return cursor == NULL ;  }    
     
-    template <class dataType , class keyType>
+   
     /* check if cursor point to head node ? */
-    bool atFirst() {return cursor == head; }
+    bool List<keyType,dataType>:: atFirst() {return cursor == head; }
 
-	template <class dataType , class keyType>
-    void toFirst()  {cursor = head ; 	prev = NULL;}
+    void List<keyType,dataType>:: toFirst()  {cursor = head ; 	prev = NULL;}
+    
+    int List<keyType,dataType>::listSize () const { return NodesCounter ; }
 
-    template <class dataType , class keyType>
-    int listSize () const { return NodesCounter ; }
-
-    template <class dataType , class keyType>
+   
     /* check if cursor at tail or if list is empty */
-    bool atEnd() const 
+    bool List<keyType,dataType>:: atEnd() const 
     { isListEmty() ? return true : return (cursor->next == NULL) ;  }
 
-    template <class dataType , class keyType>
-    void toEnd () 
+    
+    void List<keyType,dataType>::toEnd () 
     { if (!isListEmty()) 
       {
       	cursor = head ; 
@@ -41,8 +39,8 @@
       }
     }
 
-    template <class dataType , class keyType>
-    void traverse ()
+    
+    void List<keyType,dataType>:: traverse ()
     {
     	cursor = head ;
     	cout << "List is : " ;  
@@ -55,8 +53,8 @@
     }
     
     /* delete current node */
-    template <class dataType , class keyType>
-    void deleteNode(){
+    
+    void List<keyType,dataType>::deleteNode(){
     if (isListEmty()) 
     { 
    	cout << "Error : not allowed to delete from empty list " << endl ;
@@ -70,8 +68,8 @@
       	}	 
     }
 
-    template <class dataType , class keyType>
-    void deleteFirst()
+    
+    void List<keyType,dataType>::deleteFirst()
     {
     if (isListEmty()) 
     { 
@@ -86,22 +84,22 @@
     }
    
 
-    template <class dataType , class keyType>
-    void retrieveData(dataType &myData)
+    
+    void List::<keyType,dataType>retrieveData(dataType &myData)
     {
     	if (!isCurEmpty()) myData = cursor->data ;  
     }
 
-    template <class dataType , class keyType>
-	void updateData (const dataType & myData) {
+    
+	void List<keyType,dataType>::updateData (const dataType & myData) {
     if (!isCurEmpty()) cursor->data = myData ;  
 	}    
 
-	template <class dataType , class keyType>
-	void advance () { cursor = cursor->next ; }
+	
+	void List<keyType,dataType>::advance () { cursor = cursor->next ; }
 
-	template <class dataType , class keyType>
-	void insertFirst (const keyType & myKey, const dataType & myData) 
+	
+	void List<keyType,dataType>::insertFirst (const keyType & myKey, const dataType & myData) 
 		{   
 			NodesCounter ++ ; 
 			ptrToNode temp = new Node();	
@@ -113,8 +111,8 @@
 	    }
 
 
-	template <class dataType , class keyType>    
-	void insertAfter (const keyType &myKey, const dataType & myData)
+    
+	void List<keyType,dataType>::insertAfter (const keyType &myKey, const dataType & myData)
 	{
 	NodesCounter ++ ; 	
 	if (isListEmty()) insertFirst(&myKey,&myData);
@@ -136,8 +134,8 @@
 
 
 
-	template <class dataType , class keyType>    
-	void insertBefore (const keyType &myKey, const dataType & myData)
+	
+	void List<keyType,dataType>:: insertBefore (const keyType &myKey, const dataType & myData)
 	{
 	NodesCounter ++ ; 	
 	if (isListEmty()) insertFirst(&myKey,&myData);
@@ -156,8 +154,7 @@
 
 	}
 
-	template <class dataType , class keyType>    
-	void insertEnd (const keyType &myKey, const dataType & myData)
+	void List<keyType,dataType>::insertEnd (const keyType &myKey, const dataType & myData)
 	{
 		NodesCounter ++ ; 
 		ptrToNode temp = new Node();	
@@ -175,15 +172,15 @@
 
 	}
 
-	template <class dataType , class keyType>
-    void mskeListEmpty()
+
+    void List<keyType,dataType>::mskeListEmpty()
     {
     	if(!isListEmty())
     	while (cursor != NULL ) {delete cursor ; advance();}
     }
 	
-	template <class dataType , class keyType>
-    bool search (const keyType & myKey) 
+
+    bool List<dataType,keyType>::searchElement (const keyType & myKey) 
     {
     	toFirst(); 
     	while(cursor != NULL) 
@@ -193,21 +190,6 @@
     		}
     	return false ; 
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
