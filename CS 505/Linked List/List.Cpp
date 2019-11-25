@@ -1,3 +1,5 @@
+    #include "List.h"
+
     template <class dataType , class keyType>
     /* constructor */
 	List::List(){
@@ -145,10 +147,9 @@
         temp->data = myData ; 
         temp->key =  myKey ;
 
-		
 		while (cursor->key > myKey)  advance();
-		cursor->prev = temp ;  
-		temp->next = cursor ; 
+		cursor->prev = temp;   
+		temp->next = cursor; 
 		
 	}
 
@@ -174,8 +175,24 @@
 
 	}
 
-
-
+	template <class dataType , class keyType>
+    void mskeListEmpty()
+    {
+    	if(!isListEmty())
+    	while (cursor != NULL ) {delete cursor ; advance();}
+    }
+	
+	template <class dataType , class keyType>
+    bool search (const keyType & myKey) 
+    {
+    	toFirst(); 
+    	while(cursor != NULL) 
+    		{
+    			if(cursor->key == myKey) { return true ;} 
+    			advance();
+    		}
+    	return false ; 
+    }
 
 
 
