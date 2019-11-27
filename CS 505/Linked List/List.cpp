@@ -186,11 +186,17 @@
     {
     	if(!isListEmpty())
         {
-        ptrToNode temp2 = head ;
+
+        ptrToNode temp1 = head ;
+        ptrToNode temp2 = head->next ;
 		/* traverse the list to reach (cursor) and to keep the previous node */
-		while (temp2->next != NULL) {delete temp2 ; temp2 = temp2->next} ;
-		
-    	// while (cursor != NULL ) {delete cursor ; advance();}
+		while (temp2->next != NULL)
+            {   
+                delete temp1 ;
+                temp2 = temp2->next;
+                temp1 = temp1->next;
+            }
+
         }
     }
 
