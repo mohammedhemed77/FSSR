@@ -193,8 +193,9 @@
 		while (temp2->next != NULL)
             {   
                 delete temp1 ;
-                temp2 = temp2->next;
-                temp1 = temp1->next;
+                
+                temp1 = temp2:
+                temp2 = temp2->next; 
             }
 
         }
