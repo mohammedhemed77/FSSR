@@ -190,7 +190,7 @@
         ptrToNode temp1 = head ;
         ptrToNode temp2 = head->next ;
 		/* traverse the list to reach (cursor) and to keep the previous node */
-		while (temp2->next != NULL)
+		while (temp2 != NULL)
             {   
                 delete temp1 ;
                 
