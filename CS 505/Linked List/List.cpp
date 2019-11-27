@@ -53,7 +53,7 @@
     	cout << "List is : " ;
     	while(cursor->next != NULL)
     		{
-    			cout << cursor->data ;
+    			cout << cursor->data << " " ;
     			advance();
     		}
     	cout << endl ;
@@ -123,39 +123,38 @@
 	void List<dataType,keyType>::insertAfter (const keyType &myKey, const dataType & myData)
 	{
 	NodesCounter ++ ;
-	if (isListEmpty()) insertFirst(&myKey,&myData);
+	if (isListEmpty()) insertFirst(myKey,myData);
 	else
 	{
-		ptrToNode temp = new Node();
-        temp->data = myData ;
-        temp->key =  myKey ;
-		cursor = head ;
-		while (cursor->key <= myKey)  advance();
+		ptrToNode temp1 = new Node();
+        temp1->data = myData ;
+        temp1->key =  myKey ;
 		prev = cursor ;
-		temp->next = cursor->next ;
-		cursor->next = temp ;
-	}
+		temp1->next = cursor->next ;
+		cursor->next = temp1;
+		cursor = temp1 ;
 
 	}
-
-
-
+	}
 
 
 	template <class dataType , class keyType>
 	void List<dataType,keyType>:: insertBefore (const keyType &myKey, const dataType & myData)
 	{
 	NodesCounter ++ ;
-	if (isListEmpty()) insertFirst(&myKey,&myData);
+	if (isListEmpty()) insertFirst(myKey,myData);
 	else
 	{
-		ptrToNode temp = new Node();
-        temp->data = myData ;
-        temp->key =  myKey ;
+		ptrToNode temp1 = new Node();
+        temp1->data = myData ;
+        temp1->key =  myKey ;
 
-		while (cursor->key > myKey)  advance();
-		cursor->prev = temp;
-		temp->next = cursor;
+        ptrToNode temp2 = head ;
+		/* traverse the list to reach (cursor) and to keep the previous node */
+		while (temp2->next != cursor) temp2 = temp2->next ;
+		temp1->next = cursor ;
+		temp2->next = temp1 ;
+		prev = temp2;
 
 	}
 	}
@@ -164,17 +163,20 @@
 	void List<dataType,keyType>::insertEnd (const keyType &myKey, const dataType & myData)
 	{
 		NodesCounter ++ ;
-		ptrToNode temp = new Node();
-        temp->data = myData ;
-        temp->key =  myKey ;
-        temp->next = NULL ;
+		ptrToNode temp1 = new Node();
+        temp1->data = myData ;
+        temp1->key =  myKey ;
+        temp1->next = NULL ;
+
 		if (isListEmpty()) head = cursor = temp ;
 		else {
-		cursor = head ;
-    	while(cursor->next != NULL)  advance();
-    	prev = cursor ;
-    	cursor->next = temp ;
-    	cursor = temp ;  	/* make the cursor point to the new node */
+		 ptrToNode temp2 = head ;
+		/* traverse the list to reach last node */
+		while (temp2->next != NULL) temp2 = temp2->next ;
+		temp2->next = temp1 ;
+		prev = temp2;
+
+    	cursor = temp1 ;  	/* make the cursor point to the new node */
 		}
 
 	}
@@ -183,7 +185,13 @@
     void List<dataType,keyType>::makeListEmpty()
     {
     	if(!isListEmpty())
-    	while (cursor != NULL ) {delete cursor ; advance();}
+        {
+        ptrToNode temp2 = head ;
+		/* traverse the list to reach (cursor) and to keep the previous node */
+		while (temp2->next != NULL) {delete temp2 ; temp2 = temp2->next} ;
+		
+    	// while (cursor != NULL ) {delete cursor ; advance();}
+        }
     }
 
 
