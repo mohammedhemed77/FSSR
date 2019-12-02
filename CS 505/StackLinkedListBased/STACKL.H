@@ -19,16 +19,14 @@ class StackA{
 	private:
 	GenericType mytop ;
 	class Node {
-	
-	
-	
+	public: 
+        GebericType data ; 
+        Node* next; 
 	};
-	
-	
+	typedef Node* nodePtr;
+  
 
-
-
-};
+ };
 
 
 
