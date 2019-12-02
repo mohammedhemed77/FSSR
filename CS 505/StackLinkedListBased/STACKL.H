@@ -24,7 +24,7 @@ class StackA{
         Node* next; 
 	};
 	typedef Node* nodePtr;
-        nodePtr mytop ;
+        nodePtr stackTop ;
   
 
  };
