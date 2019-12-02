@@ -4,7 +4,7 @@ using namespace std ;
 #ifndef StackL_H
 #define StackL_H
 
-const int stackCapacity = 100 ;
+
 
 template<class GenericType>
 class StackA{
@@ -17,13 +17,14 @@ class StackA{
     void push(GenericType);
 
 	private:
-	GenericType mytop ;
+	
 	class Node {
 	public: 
         GebericType data ; 
         Node* next; 
 	};
 	typedef Node* nodePtr;
+        nodePtr mytop ;
   
 
  };
