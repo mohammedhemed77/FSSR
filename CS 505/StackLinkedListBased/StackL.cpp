@@ -15,6 +15,7 @@ bool StackL <GenericType>::isFull() const
 template <class GenericType>
 void StackL <GenericType>::top(GenericType &G) const
 {
+	
 	(!isEmpty()) ? G = Arr[mytop] : throw invalid_argument("Error : stack is empty , not found top element ");
 }
 
