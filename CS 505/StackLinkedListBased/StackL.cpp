@@ -32,7 +32,7 @@ void StackL<GenericType>::pop(GenericType &G)
  
 if (!isEmpty())
 {
-Node garbage = new Node;
+Node garbage = new Node();
 garbage = stackTop;
 stackTop = StackTop->next;
 G = garbage->data ;
