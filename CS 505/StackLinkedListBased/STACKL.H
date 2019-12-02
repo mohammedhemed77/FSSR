@@ -17,8 +17,14 @@ class StackA{
     void push(GenericType);
 
 	private:
-	GenericType Arr[stackCapacity];
 	GenericType mytop ;
+	class Node {
+	
+	
+	
+	};
+	
+	
 
 
 
