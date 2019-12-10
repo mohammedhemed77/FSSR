@@ -1,10 +1,17 @@
-    #include "List.h"
+#include "List.h"
 
     template <class dataType , class keyType>
     /* constructor */
 	List<dataType,keyType> :: List(){
 		head = NULL ;   cursor =  NULL;    prev = NULL ;
 	}
+    /* copy constructor */
+    template <class dataType , class keyType>    
+    List <dataType,keyType> ::List(const List &source)
+    {
+    cout << "copy constructor calling indicator .." << endl;    
+    }
+       
 	/* destructor */
 	template <class dataType , class keyType>
 	List<dataType,keyType> ::~List()
@@ -34,7 +41,7 @@
         if (isListEmpty())
             return true;
         else
-            return (cursor->next == NULL) ;
+            return (cursor == NULL) ;
     }
 
     template <class dataType , class keyType>
@@ -51,7 +58,7 @@
     {
     	cursor = head ;
     	cout << "List is : " ;
-    	while(cursor->next != NULL)
+    	while(cursor != NULL)
     		{
     			cout << cursor->data << " " ;
     			advance();
@@ -127,9 +134,10 @@
 	else
 	{
 		ptrToNode temp1 = new Node();
-        temp1->data = myData ;
-        temp1->key =  myKey ;
-		prev = cursor ;
+                temp1->data = myData ;
+                temp1->key =  myKey ;
+		
+                prev = cursor ;
 		temp1->next = cursor->next ;
 		cursor->next = temp1;
 		cursor = temp1 ;
@@ -164,11 +172,11 @@
 	{
 		NodesCounter ++ ;
 		ptrToNode temp1 = new Node();
-        temp1->data = myData ;
-        temp1->key =  myKey ;
-        temp1->next = NULL ;
+                temp1->data = myData ;
+                temp1->key =  myKey ;
+                temp1->next = NULL ;
 
-		if (isListEmpty()) head = cursor = temp ;
+		if (isListEmpty()) head = cursor = temp1 ;
 		else {
 		 ptrToNode temp2 = head ;
 		/* traverse the list to reach last node */
@@ -194,7 +202,7 @@
             {   
                 delete temp1 ;
                 
-                temp1 = temp2:
+                temp1 = temp2;
                 temp2 = temp2->next; 
             }
 
