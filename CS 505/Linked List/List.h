@@ -1,8 +1,8 @@
 /* ORDERD LIST header file  */
 /* Author : Mohammed sayed hemed */
 #include <iostream>
+#include <cstdlib>
 using namespace std ;
-
 #ifndef 	LIST_H
 #define 	LIST_H
 
@@ -16,9 +16,10 @@ public:
 	/* so : traverse process = O(1) instead of O(n) */
 	uint NodesCounter = 0 ;
 	List();  			/* class constructor */
-   ~List();  			/* class  destructor */
+        List (const List &);
+        ~List();  			/* class  destructor */
 
-    bool isListEmpty() const;
+        bool isListEmpty() const;
 	bool isCurEmpty() const;
 	void toFirst();
 	bool atFirst() const;
@@ -51,7 +52,7 @@ private:
 		Node* next;       /* pointer to the next node */
 		 	  };
 	typedef Node* ptrToNode ;
-    ptrToNode head , cursor , prev ;
+        ptrToNode head , cursor , prev ;
 
 };
 
