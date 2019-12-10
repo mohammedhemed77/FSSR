@@ -1,5 +1,6 @@
 #include <iostream>
 #include <cstdlib>
+
 using namespace std ;
 #include "List.cpp"
 int main()
@@ -22,7 +23,8 @@ int main()
     {
      list1.retrieveData(element);
      /* if element is odd */
-     if (element %2 != 0) list2.insertAfter(2,element); 
+     /* rand function generates random numbers for the keys */
+     if (element %2 != 0) list2.insertAfter(rand(),element); 
      list1.advance();
     }
     list1.toFirst();
@@ -30,7 +32,8 @@ int main()
     {
      list1.retrieveData(element);
      /* if element is even */
-     if (element %2 == 0) list2.insertAfter(2,element);
+     /* rand function generates random numbers for the keys */
+     if (element %2 == 0) list2.insertAfter(rand(),element);
      list1.advance();
     }
     /* display list 2 after edit the elements */
